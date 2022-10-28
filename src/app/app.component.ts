@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {UtilService} from '@services/util.service';
+import {NzModalService} from "ng-zorro-antd/modal";
+import {LoginComponent} from "src/app/modals/login/login.component";
 
 @Component({
   selector: 'app-root',
@@ -11,5 +13,20 @@ export class AppComponent {
   asd = '';
   array = [1, 2, 3];
 
-  constructor(public utilService: UtilService) {}
+  constructor(private nzModal: NzModalService,
+              public utilService: UtilService) {}
+
+  openLogin() {
+    const modal = this.nzModal.create({
+      nzTitle: 'Modal Title',
+      nzContent: LoginComponent,
+      nzOnOk: () => {
+        console.log('OK!')
+      },
+      nzOnCancel: () => {
+        console.log('Cancel!')
+      },
+      nzOkText: "OK"
+    });
+  }
 }

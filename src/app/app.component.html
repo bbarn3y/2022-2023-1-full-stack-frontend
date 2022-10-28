@@ -1,17 +1,35 @@
-{{title}}
+<nz-layout>
 
-<div *ngIf="asd">
-  Hidden
-</div>
-<div *ngIf="true">
-  Visible
-</div>
+  <nz-header>
+    <span class="color-white">
+      {{title}}
+    </span>
 
-<ul>
-  <ng-container *ngFor="let item of array">
-    <li *ngIf="item % 2 === 1"
-        (click)="utilService.print(item)">
-      {{item}}
-    </li>
-  </ng-container>
-</ul>
+    <div style="float: right">
+      <button nz-button nzType="default"
+              class="m-r-5"
+              (click)="openLogin()">Bejelentkezés</button>
+      <button nz-button nzType="primary">Regisztráció</button>
+    </div>
+
+  </nz-header>
+
+  <nz-content>
+    <div *ngIf="asd">
+      Hidden
+    </div>
+    <div *ngIf="true">
+      Visible
+    </div>
+
+    <ul>
+      <ng-container *ngFor="let item of array">
+        <li *ngIf="item % 2 === 1"
+            (click)="utilService.print(item)">
+          {{item}}
+        </li>
+      </ng-container>
+    </ul>
+  </nz-content>
+
+</nz-layout>

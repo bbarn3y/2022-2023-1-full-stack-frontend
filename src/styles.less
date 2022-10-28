@@ -1,0 +1,17 @@
+.generateSingleMargins(@counter) when (@counter >= 0) {
+  .generateSingleMargins(@counter - 5);
+  .m-t-@{counter} {
+    margin-top: (1px * @counter) !important;
+  }
+  .m-b-@{counter} {
+    margin-bottom: (1px * @counter) !important;
+  }
+  .m-l-@{counter} {
+    margin-left: (1px * @counter) !important;
+  }
+  .m-r-@{counter} {
+    margin-right: (1px * @counter) !important;
+  }
+}
+
+.generateSingleMargins(150);
