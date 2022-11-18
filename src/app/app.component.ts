@@ -26,7 +26,9 @@ export class AppComponent {
       nzOnCancel: () => {
         console.log('Cancel!')
       },
-      nzOkText: "OK"
+      nzOkText: "OK",
+      nzCancelText: "Cancel",
+      nzFooter: null
     });
   }
 }

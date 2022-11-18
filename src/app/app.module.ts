@@ -9,9 +9,14 @@ import {LoginComponent} from "src/app/modals/login/login.component";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NzFormModule} from "ng-zorro-antd/form";
+import {NzInputModule} from "ng-zorro-antd/input";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const zorroModules = [
   NzButtonModule,
+  NzFormModule,
+  NzInputModule,
   NzLayoutModule,
   NzModalModule
 ];
@@ -26,6 +31,8 @@ const zorroModules = [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

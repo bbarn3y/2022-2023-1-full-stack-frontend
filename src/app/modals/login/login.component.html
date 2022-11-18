@@ -1,1 +1,28 @@
-Login works!
+<form nz-form [formGroup]="loginForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="email">E-mail</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input name="email" type="email" id="email" formControlName="mail">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="password">Password</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input name="password" type="password" id="password" formControlName="password">
+    </nz-form-control>
+  </nz-form-item>
+
+  <div *ngIf="!loginForm.valid && loginForm.touched" style="color: red">
+    <div *ngIf="loginForm.controls['mail'].hasError('required')">
+      Please provide an e-mail address!
+    </div>
+    <div *ngIf="loginForm.controls['mail'].hasError('email')">
+      Please provide a valid e-mail address!
+    </div>
+    <div *ngIf="loginForm.controls['password'].hasError('required')">
+      Please provide a password!
+    </div>
+  </div>
+
+  <button nz-button (click)="this.loginForm.valid ? login($event) : null">Submit</button>
+</form>
