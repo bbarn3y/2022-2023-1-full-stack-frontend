@@ -7,14 +7,22 @@
 
     <div style="float: right">
       <button nz-button nzType="default"
+              *ngIf="!isLoggedIn"
               class="m-r-5"
               (click)="openLogin()">Bejelentkezés</button>
-      <button nz-button nzType="primary">Regisztráció</button>
+      <button nz-button nzType="primary"
+              *ngIf="!isLoggedIn">Regisztráció</button>
+      <button nz-button nzType="primary"
+              *ngIf="isLoggedIn"
+              (click)="logout()">Kijelentkezés</button>
     </div>
 
   </nz-header>
 
   <nz-content>
+    <router-outlet></router-outlet>
+
+
     <div *ngIf="asd">
       Hidden
     </div>
