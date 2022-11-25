@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
+import {inject, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {WriterGuard} from "src/app/_guards/writer.guard";
+import {UserService} from "@services/user.service";
 
 const routes: Routes = [
   {
     path: 'writer',
-    canActivate: [WriterGuard],
-    canActivateChild: [WriterGuard],
+    // canActivate: [WriterGuard],
+    canActivate: [() => inject(UserService).loggedIn],
+    canActivateChild: [() => inject(UserService).loggedIn],
+    // canActivateChild: [WriterGuard],
     loadChildren: () => import('./writer/writer.module').then(m => m.WriterModule)
   }
 ];

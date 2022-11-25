@@ -1,1 +1,33 @@
+<div *ngIf="getCurrentTime()">
+  {{ 'idő: ' | uppercase}}
+  {{ currentTime | date:'YYYY.MM.dd. HH.mm.ss' }}
+</div>
+
 <p>writer works!</p>
+
+
+<ng-template #articleTemplate>
+  Article
+</ng-template>
+
+<!--
+<ng-container *ngFor="let index of [0, 1, 2, 3, 4]">
+  <ng-container *ngTemplateOutlet="articleTemplate"></ng-container>
+</ng-container>
+-->
+
+<div *ngIf="currentTime % 2; else articleTemplate">
+  Testing
+</div>
+
+<ng-template #titleTemplate>
+  <div style="color: green">
+    Article title asd
+  </div>
+</ng-template>
+
+<nz-card style="width:300px;" [nzTitle]="titleTemplate">
+  <p>Card content</p>
+  <p>Card content</p>
+  <p>Card content</p>
+</nz-card>

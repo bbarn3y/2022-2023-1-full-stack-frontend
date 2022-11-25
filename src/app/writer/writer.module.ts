@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WriterComponent } from './writer.component';
 import {RouterModule} from "@angular/router";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {NzIconModule} from "ng-zorro-antd/icon";
 
 const routes = [
   {
@@ -16,7 +18,9 @@ const routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NzCardModule,
+    NzIconModule
   ]
 })
 export class WriterModule { }

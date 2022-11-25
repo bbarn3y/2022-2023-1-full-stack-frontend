@@ -12,10 +12,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {NzIconModule} from "ng-zorro-antd/icon";
 
 const zorroModules = [
   NzButtonModule,
+  NzCardModule,
   NzFormModule,
+  NzIconModule,
   NzInputModule,
   NzLayoutModule,
   NzModalModule
