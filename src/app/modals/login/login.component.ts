@@ -32,5 +32,8 @@ export class LoginComponent {
       })
   }
 
+  printError() {
+    console.log(this.loginForm);
+  }
 
 }

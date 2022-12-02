@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {ClientService} from "@services/client.service";
 
 @Component({
   selector: 'app-writer',
@@ -12,7 +12,7 @@ export class WriterComponent implements OnInit, AfterViewInit, OnDestroy {
   currentTime: number;
 
   constructor(private cdr: ChangeDetectorRef,
-              private http: HttpClient) {
+              private clientService: ClientService) {
     this.currentTime = Date.now();
   }
 
@@ -32,8 +32,13 @@ export class WriterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getCurrentTime() {
-    console.log('currentTime');
+    // console.log('currentTime');
     return this.currentTime;
+  }
+
+  authenticationFailure() {
+    this.clientService.login('asdads', 'asdasd')
+      .subscribe((response) => response);
   }
 
 }

@@ -3,6 +3,7 @@ import {UtilService} from '@services/util.service';
 import {NzModalService} from "ng-zorro-antd/modal";
 import {LoginComponent} from "src/app/modals/login/login.component";
 import {UserService} from "@services/user.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,12 @@ export class AppComponent {
   isLoggedIn: boolean;
 
   constructor(private nzModal: NzModalService,
+              private translate: TranslateService,
               private userService: UserService,
               public utilService: UtilService) {
+    this.translate.setDefaultLang('hu');
+    console.log(this.translate.instant('AUTHENTICATION.LOGIN'));
+
     this.isLoggedIn = this.userService.isLoggedIn();
     this.userService.loggedInStatus.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;

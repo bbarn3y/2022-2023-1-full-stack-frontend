@@ -14,6 +14,11 @@ import {NzInputModule} from "ng-zorro-antd/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzIconModule} from "ng-zorro-antd/icon";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+import {Http401Interceptor} from "src/app/_interceptors/http.401.interceptor";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {ValidatorService} from "@services/valaidators.service";
 
 const zorroModules = [
   NzButtonModule,
@@ -24,6 +29,10 @@ const zorroModules = [
   NzLayoutModule,
   NzModalModule
 ];
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -36,10 +45,25 @@ const zorroModules = [
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Http401Interceptor,
+      multi: true,
+    },
+    ValidatorService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

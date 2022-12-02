@@ -1,0 +1,7 @@
+{
+  "AUTHENTICATION": {
+    "LOGIN": "Bejelentkezés",
+    "LOGOUT": "Kijelentkezés",
+    "REGISTRATION": "Regisztráció {{who}}"
+  }
+}

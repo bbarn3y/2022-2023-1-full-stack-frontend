@@ -9,12 +9,18 @@
       <button nz-button nzType="default"
               *ngIf="!isLoggedIn"
               class="m-r-5"
-              (click)="openLogin()">Bejelentkezés</button>
+              (click)="openLogin()">
+        {{ 'AUTHENTICATION.LOGIN' | translate }}
+      </button>
       <button nz-button nzType="primary"
-              *ngIf="!isLoggedIn">Regisztráció</button>
+              *ngIf="!isLoggedIn">
+        {{ 'AUTHENTICATION.REGISTRATION' | translate: {who: 'User'} }}
+      </button>
       <button nz-button nzType="primary"
               *ngIf="isLoggedIn"
-              (click)="logout()">Kijelentkezés</button>
+              (click)="logout()">
+        {{ 'AUTHENTICATION.LOGOUT' | translate }}
+      </button>
     </div>
 
   </nz-header>

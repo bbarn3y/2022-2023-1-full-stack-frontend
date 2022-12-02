@@ -1,0 +1,7 @@
+{
+  "AUTHENTICATION": {
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "REGISTRATION": "Registration {{who}}"
+  }
+}

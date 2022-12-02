@@ -22,7 +22,10 @@
     <div *ngIf="loginForm.controls['password'].hasError('required')">
       Please provide a password!
     </div>
+    <div *ngIf="loginForm.controls['password'].hasError('number')">
+      The password MUST include a number!
+    </div>
   </div>
 
-  <button nz-button (click)="this.loginForm.valid ? login($event) : null">Submit</button>
+  <button nz-button (click)="this.loginForm.valid ? login($event) : printError()">Submit</button>
 </form>
