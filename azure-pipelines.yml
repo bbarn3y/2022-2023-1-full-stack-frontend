@@ -14,7 +14,7 @@ steps:
 #  displayName: 'Installing Angular CLI'
 #- script: npm i
 #  displayName: 'Installing dependencies'
-- script: ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack
+- script: npm run ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack
   displayName: 'Building project'
 - script: docker build -f ./docker/Dockerfile -t babuafi/@{projectName}:$(<version) .
   displayName: 'Docker build'
