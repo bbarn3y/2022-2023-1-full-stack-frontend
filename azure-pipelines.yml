@@ -18,7 +18,7 @@ steps:
 #  displayName: 'Building project'
 - script: npm run-script build-prod
   displayName: 'Building project'
-- script: docker build -f ./docker/Dockerfile -t babuafi/@{projectName}:$(<version) .
+- script: docker build -f ./docker/Dockerfile -t babuafi/@{projectName}:0.0.1 .
   displayName: 'Docker build'
-- script: docker push babuafi/@{projectName}:$(<version)
+- script: docker push babuafi/@{projectName}:0.0.1
   displayName: 'Docker push'
