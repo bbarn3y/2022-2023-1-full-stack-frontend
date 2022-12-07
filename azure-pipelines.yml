@@ -10,9 +10,13 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 steps:
-- script: npm install -g @angular/cli 
-  displayName: 'Installing Angular CLI'
-- script: npm i
-  displayName: 'Installing dependencies'
+#- script: npm install -g @angular/cli
+#  displayName: 'Installing Angular CLI'
+#- script: npm i
+#  displayName: 'Installing dependencies'
 - script: ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack
   displayName: 'Building project'
+- script: docker build -f ./docker/Dockerfile -t babuafi/@{projectName}:$(<version) .
+  displayName: 'Docker build'
+- script: docker push babuafi/@{projectName}:$(<version)
+  displayName: 'Docker push
