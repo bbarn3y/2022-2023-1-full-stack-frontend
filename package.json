@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod": "ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
