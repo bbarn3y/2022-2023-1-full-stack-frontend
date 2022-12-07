@@ -19,4 +19,4 @@ steps:
 - script: docker build -f ./docker/Dockerfile -t babuafi/@{projectName}:$(<version) .
   displayName: 'Docker build'
 - script: docker push babuafi/@{projectName}:$(<version)
-  displayName: 'Docker push
+  displayName: 'Docker push'
