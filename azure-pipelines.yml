@@ -4,11 +4,13 @@
 # https://aka.ms/yaml
 
 trigger:
-  batch: true
-  
+- master
 
 pool:
-  vmImage: node:8
+  vmImage: 'ubuntu-latest' 
+
+variables:
+  imageName: 'pipelines-javascript-docker'
 
 steps:
 - script: npm install -g @angular/cli 
