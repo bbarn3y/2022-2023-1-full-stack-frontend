@@ -28,7 +28,7 @@ steps:
 - script: |
     docker push babuafi/$(projectName):$(version)
   displayName: 'Docker push'
-- script: |
+- powershell: |
     $file = "version"
     $fileVersion = [version](Get-Content $file | Select -First 1)
     $newVersion = "{0}.{1}.{2}" -f $fileVersion.Major, $fileVersion.Minor, ($fileVersion.Path + 1)
