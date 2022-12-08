@@ -41,6 +41,7 @@ steps:
     git config --global user.email "$(gitUserEmail)"
     git add version
     git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
+    git remote set-url origin https://$(gitUserName):$(gitToken)@github.com/bbarn3y/2022-2023-1-full-stack-frontend.git
   displayName: 'Create and Git commit new version'
 - powershell:
     git fetch origin master
