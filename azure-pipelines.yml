@@ -42,7 +42,7 @@ steps:
     git add version
     git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
   displayName: 'Create and Git commit new version'
-- powershell:
+- powershell: |
     git remote set-url origin https://$(gitUserName):$(gitToken)@github.com/bbarn3y/2022-2023-1-full-stack-frontend.git
     git fetch origin master
     git push origin HEAD:master
