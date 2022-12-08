@@ -3,6 +3,11 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+pool:
+  vmImage: 'ubuntu-latest'
+
+container: ubuntu:18.04
+
 trigger:
 - master
 
@@ -10,10 +15,12 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 steps:
+- script: printenv
+  displayName: 'Print environment'
 #- script: npm install -g @angular/cli
 #  displayName: 'Installing Angular CLI'
-#- script: npm i
-#  displayName: 'Installing dependencies'
+- script: npm i
+  displayName: 'Installing dependencies'
 #- script: ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack
 #  displayName: 'Building project'
 - script: npm run-script build-prod
