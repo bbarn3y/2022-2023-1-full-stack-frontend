@@ -47,4 +47,4 @@ steps:
   displayName: 'Git fetch'
 - powershell:
     git push origin HEAD:master
-  displayName: 'Git push
+  displayName: 'Git push'
