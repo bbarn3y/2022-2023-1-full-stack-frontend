@@ -30,8 +30,8 @@ steps:
   displayName: 'Docker push'
 - powershell: |
     $file = "version"
-    $fileVersion = [version](Get-Content $file | Select -First 1)
-    $newVersion = "{0}.{1}.{2}" -f $fileVersion.Major, $fileVersion.Minor, ($fileVersion.Path + 1)
-    $newVersion | Set-Content $file
-    echo "$fileVersion -> $newVersion"
+    $fileVersion = (Get-Content $file | Select -First 1).Split(".")
+    $fileVersion[2] = [int]$fileVersion[2] + 1
+    $fileVersion -join "." | Set-Content $file
+    echo "$fileVersion"
   displayName: 'Bump version'
