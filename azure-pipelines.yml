@@ -37,6 +37,8 @@ steps:
     echo "$newVersion"
   displayName: 'Bump version'
 - powershell: |
+    git config --global user.name "$(gitUserName)"
+    git config --global user.email "$(gitUserEmail)"
     git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
     git fetch origin master
     git push origin HEAD:master
