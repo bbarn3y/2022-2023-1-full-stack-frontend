@@ -28,3 +28,10 @@ steps:
 - script: |
     docker push babuafi/$(projectName):$(version)
   displayName: 'Docker push'
+- script: |
+    $file = "version"
+    $fileVersion = [version](Get-Content $file | Select -First 1)
+    $newVersion = "{0}.{1}.{2}" -f $fileVersion.Major, $fileVersion.Minor, ($fileVersion.Path + 1)
+    $newVersion | Set-Content $file
+    echo "$fileVersion -> $newVersion"
+  displayName: 'Bump version'
