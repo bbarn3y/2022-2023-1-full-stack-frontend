@@ -18,16 +18,16 @@ steps:
 #  displayName: 'Building project'
 #- script: docker build -f ./docker/Dockerfile -t babuafi/$(projectName):0.0.1 .
 #  displayName: 'Docker build'
-- script: docker login -u$(dockerUser) -p$(dockerPass)
-  displayName: 'Docker Hub login'
-- powershell: |
-    $version = (Get-Content .\version)
-    echo "$version"
-    echo "##vso[task.setvariable variable=version]$version"
-  displayName: 'Read version'
-- script: |
-    docker push babuafi/$(projectName):$(version)
-  displayName: 'Docker push'
+#- script: docker login -u$(dockerUser) -p$(dockerPass)
+#  displayName: 'Docker Hub login'
+#- powershell: |
+#    $version = (Get-Content .\version)
+#    echo "$version"
+#    echo "##vso[task.setvariable variable=version]$version"
+#  displayName: 'Read version'
+#- script: |
+#    docker push babuafi/$(projectName):$(version)
+#  displayName: 'Docker push'
 - powershell: |
     $file = "version"
     $fileVersion = (Get-Content $file | Select -First 1).Split(".")
@@ -41,6 +41,10 @@ steps:
     git config --global user.email "$(gitUserEmail)"
     git add version
     git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
+  displayName: 'Create and Git commit new version'
+- powershell:
     git fetch origin master
+  displayName: 'Git fetch'
+- powershell:
     git push origin HEAD:master
-  displayName: 'Git commit and push new version'
+  displayName: 'Git push
