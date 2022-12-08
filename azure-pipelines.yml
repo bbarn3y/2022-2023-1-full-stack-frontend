@@ -10,24 +10,24 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 steps:
-#- script: npm i
-#  displayName: 'Installing dependencies'
-#- script: ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack
-#  displayName: 'Building project'
+- script: npm i
+  displayName: 'Installing dependencies'
+- script: ng build --configuration production --source-map=false --subresource-integrity --output-path=dist/full-stack
+  displayName: 'Building project'
 #- script: npm run-script build-prod
 #  displayName: 'Building project'
-#- script: docker build -f ./docker/Dockerfile -t babuafi/$(projectName):0.0.1 .
-#  displayName: 'Docker build'
-#- script: docker login -u$(dockerUser) -p$(dockerPass)
-#  displayName: 'Docker Hub login'
-#- powershell: |
-#    $version = (Get-Content .\version)
-#    echo "$version"
-#    echo "##vso[task.setvariable variable=version]$version"
-#  displayName: 'Read version'
-#- script: |
-#    docker push babuafi/$(projectName):$(version)
-#  displayName: 'Docker push'
+- script: docker build -f ./docker/Dockerfile -t babuafi/$(projectName):0.0.1 .
+  displayName: 'Docker build'
+- script: docker login -u$(dockerUser) -p$(dockerPass)
+  displayName: 'Docker Hub login'
+- powershell: |
+    $version = (Get-Content .\version)
+    echo "$version"
+    echo "##vso[task.setvariable variable=version]$version"
+  displayName: 'Read version'
+- script: |
+    docker push babuafi/$(projectName):$(version)
+  displayName: 'Docker push'
 - powershell: |
     $file = "version"
     $fileVersion = (Get-Content $file | Select -First 1).Split(".")
@@ -41,11 +41,9 @@ steps:
     git config --global user.email "$(gitUserEmail)"
     git add version
     git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
-    git remote set-url origin https://$(gitUserName):$(gitToken)@github.com/bbarn3y/2022-2023-1-full-stack-frontend.git
   displayName: 'Create and Git commit new version'
 - powershell:
+    git remote set-url origin https://$(gitUserName):$(gitToken)@github.com/bbarn3y/2022-2023-1-full-stack-frontend.git
     git fetch origin master
-  displayName: 'Git fetch'
-- powershell:
     git push origin HEAD:master
   displayName: 'Git push'
