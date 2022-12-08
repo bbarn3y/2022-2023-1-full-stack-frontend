@@ -20,5 +20,7 @@ steps:
 #  displayName: 'Docker build'
 - script: docker login -u$(dockerUser) -p$(dockerPass)
   displayName: 'Docker Hub login'
-- script: docker push babuafi/$(projectName):$(Get-Content $filePath)
+- script: |
+    $version = Get-Content version
+    docker push babuafi/$(projectName):$(version)
   displayName: 'Docker push'
