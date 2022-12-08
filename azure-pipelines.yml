@@ -18,7 +18,7 @@ steps:
 #  displayName: 'Building project'
 #- script: docker build -f ./docker/Dockerfile -t babuafi/$(projectName):0.0.1 .
 #  displayName: 'Docker build'
-- script: echo $(dockerPass) | docker login -u $(dockerUser) --password-stdin
+- script: echo $(dockerPass) | docker login -u$(dockerUser) --password-stdin
   displayName: 'Docker Hub login'
 - script: docker push babuafi/$(projectName):0.0.1
   displayName: 'Docker push'
