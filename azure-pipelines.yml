@@ -36,3 +36,7 @@ steps:
     $newVersion | Set-Content $file
     echo "$newVersion"
   displayName: 'Bump version'
+- powershell: |
+    git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
+    git fetch origin master && git push origin HEAD:master
+  displayName: 'Git commit and push new version'
