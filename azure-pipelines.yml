@@ -10,8 +10,6 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 steps:
-- script: printenv
-  displayName: 'Print environment'
 #- script: npm install -g @angular/cli
 #  displayName: 'Installing Angular CLI'
 - script: npm i
