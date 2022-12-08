@@ -27,6 +27,7 @@ steps:
   displayName: 'Docker Hub login'
 - script: |
     docker push babuafi/$(projectName):$(version)
+    docker push babuafi/$(projectName):latest
   displayName: 'Docker push'
 - powershell: |
     $file = "version"
