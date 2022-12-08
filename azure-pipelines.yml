@@ -32,6 +32,7 @@ steps:
     $file = "version"
     $fileVersion = (Get-Content $file | Select -First 1).Split(".")
     $fileVersion[2] = [int]$fileVersion[2] + 1
-    $fileVersion -join "." | Set-Content $file
-    echo "$fileVersion"
+    $newVersion = $fileVersion -join "."
+    $newVersion | Set-Content $file
+    echo "$newVersion"
   displayName: 'Bump version'
