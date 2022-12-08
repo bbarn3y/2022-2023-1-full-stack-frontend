@@ -38,5 +38,6 @@ steps:
   displayName: 'Bump version'
 - powershell: |
     git commit -m "[Bump] version to: ${newVersion} [***NO_CI***]"
-    git fetch origin master && git push origin HEAD:master
+    git fetch origin master
+    git push origin HEAD:master
   displayName: 'Git commit and push new version'
