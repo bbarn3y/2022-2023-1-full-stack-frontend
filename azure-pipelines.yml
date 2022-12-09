@@ -6,9 +6,6 @@
 trigger:
 - master
 
-variables:
-  imageName: 'pipelines-javascript-docker'
-
 steps:
 - script: npm i
   displayName: 'Installing dependencies'
